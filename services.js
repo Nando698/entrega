@@ -1,5 +1,5 @@
 import bcrypt from 'bcrypt'
-
+import {modelo, cart_model, products_model} from './models.js'
 
 function auth(req, res, next) {
     if (req.user) {
@@ -10,6 +10,21 @@ function auth(req, res, next) {
         })
     }
 }
+
+async function isAdmin(req, res, next) {
+    
+    const user = await modelo.findOne({_id: req.session?.passport?.user})
+        
+    if (user?.admin) {
+        return next();  
+    }
+
+
+    res.render('error', {data: "No estas autorizado"})
+    
+}
+
+
 
  function  hashPassword(password) {
     return  bcrypt.hashSync(password,  bcrypt.genSaltSync(10));
@@ -39,5 +54,6 @@ export {
     auth,
     hashPassword,
     isValidPassword,
-    validatePass
+    validatePass,
+    isAdmin
 }

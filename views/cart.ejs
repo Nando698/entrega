@@ -27,9 +27,10 @@
 
               <p>Precio:<%- p.product_price %> </p>
               <img src="<%- p.product_imgUrl %>">
-              <form action="/carrito/<%= p.id %>" method="post"><button type="submit">Agregar</button></form>
             </div>
            <% })  %> 
+
+           <a href="./">VOLVER</a>
             </div>
             <% }else{ %>
             <h1>Por favor inicie sesion para ver los productos</h1>

@@ -10,17 +10,17 @@
 <title>Document</title>
 </head>
 <body>
-    <div id="sUp-form-container">
-        <h2>Registrar nuevo usuario</h2>
-        <form action="/register" method="post" id="sUp-form">
-            <input type="text" placeholder="Nombre" name="input_name">
-            <input type="text" placeholder="Apellido" name="input_lastName">
-            <input type="text" placeholder="e-mail" name="username">
+    <div id="load-form-container">
+        <h2>Cargar producto</h2>
+        <form action="/load-product" method="post" id="load-form">
+            <input type="text" placeholder="Nombre" name="product_name">
+            <input type="text" placeholder="Descripcion" name="product_description">
+            <input type="number" placeholder="Precio" name="product_price">
+            <input type="text" placeholder="url" name="product_imgUrl">
+            <input type="number" placeholder="Stock" name="product_stock">
             
-            <input type="text" placeholder="Password, minimo 8 caracteres" name="password">
-            <input type="text" placeholder="Repetir Password" name="password2">
             <button class="btn btn-success" type="submit">Enviar</button>
-            <button class="btn btn-dark"><a href="/">volver</a></button>
+            <button class="btn btn-dark"><a href="./">volver</a></button>
 
         </form>
     </div>

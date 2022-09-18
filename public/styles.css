@@ -69,7 +69,7 @@ main {
         width: 20rem;
 }
 
-#sUp-form-container {
+#sUp-form-container, #load-form-container {
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -77,13 +77,52 @@ main {
         align-items: center;
 }
 
-#sUp-form {
+#sUp-form, #load-form {
         display: flex;
         flex-direction: column;
         width: 13vw;
 
 }
 
-#sUp-form * {
+#sUp-form * , #load-form *{
         width: 100%;
+}
+
+.card {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        border: 2px solid black;
+        border-radius: 10px;
+        background-color: rgba(2, 87, 121, 0.747);
+        max-width: 200px;
+        padding: 10px;
+}
+
+.listContainer {
+        display: flex;
+        gap: 10px;
+}
+
+.card img {
+        max-width: 50px;
+}
+
+h3 {
+        color: azure;
+        font-size: 0.5 em;
+}
+
+#welcontainer {
+        display: flex;
+        flex-direction: column;
+
+}
+
+#welcontainer a {
+        font-size: 0.7rem;
+}
+
+h1 {
+        font-size: 1rem;
 }
