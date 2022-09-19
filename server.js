@@ -41,9 +41,14 @@ const mongoOptions = { useNewUrlParser: true, useUnifiedTopology: true }
 const PORT = Number(process.argv[2]) || 3000;
 const iscluster = process.argv[3] == "cluster";
 
+/////////////
+import multer from 'multer';
+import {upload, storage} from './multer.js'
 
 
 
+
+///////////////
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
@@ -70,7 +75,7 @@ app.use(
 app.use(passport.initialize())
 app.use(passport.session())
 
-app.post('/register',  validatePass ,await passport.authenticate('register', {failureRedirect: '/error'}), (req,res) => res.redirect('/'))
+app.post('/register' ,upload.single('avatar'),  validatePass ,await passport.authenticate('register', {failureRedirect: '/error'}), (req,res) => res.redirect('/'))
 app.post('/login', passport.authenticate('login', {failureRedirect: '/login-error', failureMessage: true}), (req,res) => res.redirect('/'))
 
 

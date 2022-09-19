@@ -11,7 +11,7 @@ a, a:hover, a:visited, a:active {
 
 #error {
         font-size: 3rem;
-        color: rgb(197, 7, 7);
+        color: rgb(182, 182, 182);
         text-align: center;
 }
 
@@ -125,4 +125,9 @@ h3 {
 
 h1 {
         font-size: 1rem;
+}
+
+img#avatar {
+        max-width: 5em;
+        border-radius: 50%;
 }

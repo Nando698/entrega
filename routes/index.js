@@ -12,7 +12,7 @@ let router = Router()
 router.get('/', (req, res) => {
     if(req.user){
       console.log('req session user', req.session.passport)
-      res.render('index', {data : req.user.firstName, products: product_list})
+      res.render('index', {data : req.user, products: product_list})
       console.log(req.session.passport)
     }else{
       res.render('index', {data:undefined, products: undefined})
@@ -25,7 +25,15 @@ router.post('/carrito/:id', addCart)
 
 router.get('/carrito', async (req, res) => {
   const cart = await getUserCart(req.session.passport.user)
+
+  if(cart[0]){
+    console.log(typeof cart)
   res.render('cart', {data: req.user.firstName, products: cart[0].products})
+  }else{
+  res.render('error', {data: 'No agregaste productos al carrito'})
+
+  }
+
 })
 
 router.get('/logOut', auth, (req, res) => {

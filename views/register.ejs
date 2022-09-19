@@ -12,13 +12,15 @@
 <body>
     <div id="sUp-form-container">
         <h2>Registrar nuevo usuario</h2>
-        <form action="/register" method="post" id="sUp-form">
+        <form action="/register" method="post" id="sUp-form" enctype="multipart/form-data">
             <input type="text" placeholder="Nombre" name="input_name">
             <input type="text" placeholder="Apellido" name="input_lastName">
             <input type="text" placeholder="e-mail" name="username">
+            <input type="file" name="avatar" id="avatar">
             
             <input type="text" placeholder="Password, minimo 8 caracteres" name="password">
             <input type="text" placeholder="Repetir Password" name="password2">
+            
             <button class="btn btn-success" type="submit">Enviar</button>
             <button class="btn btn-dark"><a href="/">volver</a></button>
 
