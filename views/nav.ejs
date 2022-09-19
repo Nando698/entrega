@@ -16,9 +16,9 @@
 
 <% }else{ %>
   <div id="welcontainer">
-  <img src="/upload/<%= data.avatar %>" id="avatar">
- <h1>Bienvenido <%= data.firstName %> </h1>  
- <a href="./carrito">Ver tus productos</h3></a>
+    <h1>Bienvenido <%= data.firstName %> </h1>  
+    <a href="./carrito">Ver tus productos</h3></a>
+    <img src="/upload/<%= data.avatar %>" id="avatar">
  </div>
  <form action="/logOut" method="get"><button type="submit" id="logOut-btn">Cerrar sesion</button></form>
       <% } %>
