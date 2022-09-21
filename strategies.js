@@ -1,6 +1,7 @@
 import {Strategy as LocalStrategy} from "passport-local";
 import {hashPassword, isValidPassword} from "./services.js";
 import {modelo} from './models.js'
+import { sendMail } from "./services.js";
 import mongoose from "mongoose";
 import {mongoConnection} from  './db.js'
 mongoose.connect(mongoConnection).then(()=>console.log("Conexión establecida con Mongo")).catch(error=>console.log("error: ", error));
@@ -30,7 +31,11 @@ const signUp_strategy = new LocalStrategy({
                 admin: false
             };
 
+
+
             const createdUser = await modelo.create(newUser);
+
+            sendMail(process.env.MAIL , 'Nuevo registro de usuario', `${req.body.input_name} ${req.body.input_lastName} se ha registrado con el mail ${req.body.username}`)
 
             done(null, createdUser);
         } catch (err) {

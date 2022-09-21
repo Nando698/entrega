@@ -1,6 +1,9 @@
 import { Router } from "express";
 import { auth, isAdmin} from '../services.js';
 import {loadProduct, getProducts, addCart, getUserCart} from '../controllers/index.js'
+import { sendMail } from "../services.js";
+import util from 'util'
+
 
 const product_list = await getProducts()
 
@@ -27,8 +30,7 @@ router.get('/carrito', async (req, res) => {
   const cart = await getUserCart(req.session.passport.user)
 
   if(cart[0]){
-    console.log(typeof cart)
-  res.render('cart', {data: req.user.firstName, products: cart[0].products})
+  res.render('cart', {data: req.user, products: cart[0].products})
   }else{
   res.render('error', {data: 'No agregaste productos al carrito'})
 
@@ -53,7 +55,7 @@ router.get('/load-product',isAdmin ,(req,res) => {
 } )
 
 
-router.post('/load-product', loadProduct)
+router.post('/load-product', isAdmin, loadProduct)
 
 
 
@@ -65,7 +67,12 @@ router.get('/login-error', (req, res) => {
   res.render('login-error')
 })
 
-
+router.post('/sendOrder', async (req, res) => {
+  await sendMail(process.env.MAIL, `Pedido de: ${req.user.username}`, `Nuevo pedido:
+  ${req.body.prueb}`)
+  console.log('sending' , req.user.firstName)
+  res.redirect('/')
+})
 
 
   

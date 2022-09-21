@@ -1,5 +1,5 @@
 import {modelo, cart_model, products_model} from '../models.js'
-
+import { sendMail } from '../services.js'
 
 const loadProduct = async (req, res) => {
     
@@ -50,5 +50,8 @@ const addCart = async (req, res) => {
     }
 
 }
+
+
+
 
 export {loadProduct, getProducts, addCart, getUserCart}

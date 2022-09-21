@@ -102,6 +102,7 @@ main {
 .listContainer {
         display: flex;
         gap: 10px;
+        margin-right: 500px;
 }
 
 .card img {
@@ -134,4 +135,8 @@ img#avatar {
         position: absolute;
         margin: 35px 0px 0px 20px;
         
+}
+
+input:disabled {
+        color:rgba(255, 255, 255, 0.65);
 }

@@ -19,22 +19,39 @@
     <% if(products != undefined ){ %>
 
         
-        <div class="listContainer">
-            <% products.forEach(p => { %> 
-            <div class="card">
-              <h2><%- p.product_name %> </h2>
-              <h3><%- p.product_description %> </h3>
+            <div class="listContainer">
+                <% products.forEach(p => { %> 
+                <div class="card">
+                <h2><%- p.product_name %> </h2>
+                <h3><%- p.product_description %> </h3>
 
-              <p>Precio:<%- p.product_price %> </p>
-              <img src="<%- p.product_imgUrl %>">
-            </div>
+                <p>Precio:<%- p.product_price %> </p>
+                <img src="<%- p.product_imgUrl %>">
+                </div>
            <% })  %> 
-
+           <br>
            <a href="./">VOLVER</a>
-            </div>
+        </div>          
+           <form action="/sendOrder" method="POST">
+                
+                
+                <% products.forEach(p => { %>
+                
+                <input type="text" value="<%- p.product_name%>"  class="orderDetail"  name="prueb" id="prueb"> <br>
+                
+                
+                <% })  %> 
+
+
+            <button type="submit">Enviar pedido</button>
+            </form>
+          
+           
             <% }else{ %>
             <h1>Por favor inicie sesion para ver los productos</h1>
             <% } %>
     </main>
+
+
 </body>
 </html>
