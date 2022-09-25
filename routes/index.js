@@ -2,7 +2,6 @@ import { Router } from "express";
 import { auth, isAdmin} from '../services.js';
 import {loadProduct, getProducts, addCart, getUserCart} from '../controllers/index.js'
 import { sendMail } from "../services.js";
-import util from 'util'
 
 
 const product_list = await getProducts()
@@ -16,7 +15,7 @@ router.get('/', (req, res) => {
     if(req.user){
       console.log('req session user', req.session.passport)
       res.render('index', {data : req.user, products: product_list})
-      console.log(req.session.passport)
+      
     }else{
       res.render('index', {data:undefined, products: undefined})
 

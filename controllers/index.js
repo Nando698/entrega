@@ -1,5 +1,6 @@
 import {modelo, cart_model, products_model} from '../models.js'
 import { sendMail } from '../services.js'
+import {loadProduct} from '../services/product.services.js'
 
 const loadProduct = async (req, res) => {
     
