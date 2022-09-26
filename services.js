@@ -1,6 +1,6 @@
 import bcrypt from 'bcrypt'
 import {modelo, cart_model, products_model} from './models.js'
-import nodemailer from 'nodemailer'
+//import nodemailer from 'nodemailer'
 
 function auth(req, res, next) {
     if (req.user) {
@@ -52,7 +52,7 @@ function validatePass(req, res, next) {
 //// MAILER ////
 
 //config
-const transporter = nodemailer.createTransport({
+/* const transporter = nodemailer.createTransport({
     host: 'smtp.ethereal.email',
     port: 587,
     auth: {
@@ -76,7 +76,7 @@ const sendMail = async (mail, subject, body) => {
 
     const info = await transporter.sendMail(mailOptions)
 }
-
+ */
 
 
 export {
@@ -84,6 +84,5 @@ export {
     hashPassword,
     isValidPassword,
     validatePass,
-    isAdmin,
-    sendMail
+    isAdmin
 }

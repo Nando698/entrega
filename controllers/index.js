@@ -1,14 +1,10 @@
 import {modelo, cart_model, products_model} from '../models.js'
-import { sendMail } from '../services.js'
-import {loadProduct} from '../services/product.services.js'
+import {load_prod} from '../services/product.services.js'
+import { add_cart, get_cart } from '../services/cart.services.js'
 
 const loadProduct = async (req, res) => {
     
-    const product = await products_model.create(req.body)
-
-    
-
-    res.render('loaded')
+        await load_prod(req, res)
 
     
 }
@@ -20,39 +16,18 @@ const getProducts = async () => {
     return allProducts
 }
 
-const getUserCart = async (id) => {
-    
-    const userCart = await cart_model.find({user_id : id})
-
-    return userCart
-}
-
-
-
-
-
 
 const addCart = async (req, res) => {
 
-    const existingCart = await cart_model.findOne({user_id : req.session.passport.user})
-    const product = await products_model.findOne({_id: req.params.id})
+    await add_cart(req, res)
 
-    if(existingCart){
-        existingCart.products.push(product)
-        await existingCart.save()
-        res.render('added', {product})
-       
-    }else{
-        const newCart = new cart_model({user_id: req.session.passport.user, products: product})
-        await newCart.save()
+}
 
-        res.render('added', {product})
+const getCart = async (req, res) => {
 
-    }
+    await get_cart(req, res)
 
 }
 
 
-
-
-export {loadProduct, getProducts, addCart, getUserCart}
+export {loadProduct, getProducts, addCart, getCart}
