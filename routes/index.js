@@ -1,6 +1,6 @@
 import { Router } from "express";
 import { auth, isAdmin} from '../services.js';
-import {loadProduct, getProducts, addCart, getCart} from '../controllers/index.js'
+import {loadProduct, getProducts, addCart, getCart, logOut} from '../controllers/index.js'
 
 
 
@@ -27,13 +27,7 @@ router.post('/carrito/:id', addCart)
 
 router.get('/carrito', getCart)
 
-router.get('/logOut', auth, (req, res) => {
-  let user = req.session.user
-  req.session.destroy()
-  res.render('bye', {data: user})
- 
-    
-})
+router.get('/logOut', auth, logOut)
 
 router.get('/register', (req,res) => {
   res.render('register')

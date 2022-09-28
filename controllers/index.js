@@ -30,4 +30,12 @@ const getCart = async (req, res) => {
 }
 
 
-export {loadProduct, getProducts, addCart, getCart}
+const logOut = (req, res) => {
+    let user = req.session.user
+    req.session.destroy()
+    res.render('bye', {data: user})
+   
+      
+  }
+
+export {loadProduct, getProducts, addCart, getCart, logOut}
