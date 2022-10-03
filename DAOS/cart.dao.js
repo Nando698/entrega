@@ -28,6 +28,9 @@ const getUserCart = async (id) => {
     return userCart
 }
 
+const delteProductFromCart = async (productId, cartId) => {
+    await cart_model.updateOne({ _id: productId });
+  };
 
 export const cartDao = {
     addCart,

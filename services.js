@@ -48,6 +48,16 @@ function validatePass(req, res, next) {
     return next()
 }
 
+function isLogged(req, res, next) {
+
+    if(req.session.passport){
+        next()
+    }else{
+        res.render('error', {data: 'No estas logeado'})
+    }
+
+
+}
 
 //// MAILER ////
 
@@ -84,5 +94,6 @@ export {
     hashPassword,
     isValidPassword,
     validatePass,
-    isAdmin
+    isAdmin,
+    isLogged
 }
