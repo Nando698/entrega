@@ -29,6 +29,18 @@ const products_schema = new mongoose.Schema({
     
 })
 
+const chat_schema = new mongoose.Schema({
+    author: {
+      email: { type: String, required: true },
+      nombre: { type: String, required: true },
+      apellido: { type: String, required: true },
+      alias: { type: String, required: true },
+      
+    },
+    text: { type: String, required: true },
+    fechahora: { type: String, required: true },
+  });
+
 
 
 
@@ -36,8 +48,9 @@ const products_schema = new mongoose.Schema({
 const modelo = mongoose.model('User', schema);
 const cart_model = mongoose.model('Cart', cart_schema);
 const products_model = mongoose.model('Products', products_schema);
+const chat_model = mongoose.model('Chats', chat_schema);
 
 
 
 
-export {modelo, cart_model, products_model}
+export {modelo, cart_model, products_model, chat_model}

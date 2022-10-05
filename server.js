@@ -8,11 +8,23 @@ import 'dotenv/config'
 import Yargs from "yargs";
 const args = Yargs(process.argv.slice(2)).default({port: 3000}).argv;
 const port = args.port
-
 /////////////
 import { signUp_strategy, login_strategy } from './strategies.js';
-import {modelo, products_model, cart_model} from './models.js'
+import {modelo} from './models.js'
 
+/////////////
+import { createServer } from "http";
+import { Server} from "socket.io";
+
+import {addMsg, getMsg} from './DAOS/chat.dao.js'
+
+
+
+
+
+
+
+  
 
 
 /////////////
@@ -28,7 +40,7 @@ mongoose.connect(mongoConnection)
 import cluster from "cluster";
 
 /////////////
-import { auth , validatePass} from './services.js';
+import { validatePass} from './services.js';
 import mongoose from 'mongoose';
 
 
@@ -94,7 +106,7 @@ passport.deserializeUser((id, done) => {
 
 
 
-app.set('views', path.join(__dirname, 'views'))
+app.set('views', path.join(__dirname, '/views'))
 app.set('view engine', 'ejs')
 
 
@@ -113,9 +125,25 @@ if (iscluster && cluster.isPrimary) {
  
  
  
-  app.listen(PORT, () => {
-    console.log(`Server listening port  ${PORT}`);
+  const expressServer = app.listen(PORT, () => {
+    console.log(`Server listeningg port  ${PORT}`);
   });
+  const io = new Server(expressServer)
+
+  io.on('connection', async socket => {
+    console.log('Se conecto un usuario nuevo', socket.id)
+
+    let arrayMsj = await getMsg()
+    socket.emit('server:msgs', arrayMsj);
+    
+    socket.on('client:msg', async msgInfo => {
+        
+        await addMsg(msgInfo)
+        let arrayMsj = await getMsg()
+        socket.emit('server:msgs', arrayMsj)
+    })
+
+})
 }
 
 

@@ -140,3 +140,27 @@ img#avatar {
 input:disabled {
         color:rgba(255, 255, 255, 0.65);
 }
+
+#chat {
+        margin: 100px 200px 50px 200px;
+        text-align: center;
+
+}
+
+#chat-pool {
+        background-color: antiquewhite;
+        height: 500px;
+        text-align:left
+}
+
+#chat-title {
+        font-size: 2rem;
+        color:blanchedalmond;
+        font-family: monospace;
+}
+
+#chatButton {
+        margin-left: 10vw;
+        font-size: 2em;
+}
+

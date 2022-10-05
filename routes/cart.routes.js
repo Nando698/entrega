@@ -13,5 +13,9 @@ router
   .route('/:id')
   .post(isLogged, cartController.addCart)
 
+router
+  .route('/:cartId/:prodId')
+  .get(cartController.deleteProduct)
+
 
   export default router
