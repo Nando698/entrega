@@ -7,7 +7,6 @@ const product_list = await productDao.getProducts()
 
 const getAllProducts = (req, res) => {
     if (req.user) {
-        console.log('req session user', req.user)
         res.render('index', {
             data: req.user,
             products: product_list

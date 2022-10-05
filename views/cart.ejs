@@ -27,7 +27,7 @@
 
                 <p>Precio:<%- p.product_price %> </p>
                 <img src="<%- p.product_imgUrl %>">
-                <form action="/carrito/<%= cart %>/<%= p._id %>" method="get"><button type="submit">Eliminar</button></form>
+                <form action="/carrito/<%= cart %>/<%= p._id %>" method="post"><button type="submit">Eliminar</button></form>
                 </div>
            <% })  %> 
            <br>

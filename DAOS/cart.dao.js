@@ -32,13 +32,12 @@ const deleteProductFromCart = async (req, res) => {
     
     let cart = await cart_model.findById(req.params.cartId)
     
-    
-    let index = cart.products.findIndex(p => p.id == req.params.prodId)
+    let index = cart.products.findIndex(p => p._id == req.params.prodId)
 
-    
+    cart.products.splice(index, 1)
 
         
-    let updated_cart = await cart_model.updateOne({_id: req.params.cartId}, {$set:{products : cart.products.splice(index, 1)}})
+    let updated_cart = await cart_model.updateOne({_id: req.params.cartId}, {$set:{products : cart.products}})
 
   };
 

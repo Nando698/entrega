@@ -26,7 +26,6 @@ router.get('/error', (req, res) => {res.render('error', {data: 'error'})})
 
 router.post('/sendOrder', async (req, res) => {
   
-  console.log('sending' , req.user.firstName)
   res.redirect('/')
 })
 

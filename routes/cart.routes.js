@@ -15,7 +15,7 @@ router
 
 router
   .route('/:cartId/:prodId')
-  .get(cartController.deleteProduct)
-
+  .post(cartController.deleteProduct)
+  
 
   export default router
