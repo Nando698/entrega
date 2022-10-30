@@ -9,6 +9,7 @@ import Yargs from "yargs";
 const args = Yargs(process.argv.slice(2)).default({port: 3000}).argv;
 const port = args.port
 
+
 ///////////// session
 import { signUp_strategy, login_strategy } from './strategies.js';
 import {modelo} from './models.js'
@@ -51,6 +52,7 @@ import {upload} from './multer.js'
 
 
 
+
 /////////////// General conf / middle
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -67,7 +69,7 @@ app.use(
     saveUninitialized: false,
     rolling: true,
     cookie: {
-      maxAge: 600000,
+      maxAge: 600000
     },
   })
 );
@@ -84,6 +86,8 @@ app.post('/login', passport.authenticate('login', {
 }), (req, res) => res.redirect('/'))
 
 
+
+//PASSPORT 
 passport.use('register', signUp_strategy)
 passport.use('login', login_strategy)
 
@@ -106,11 +110,20 @@ app.use("/", routes)
 
 
 
-const expressServer = app.listen(PORT, () => {
+const expressServer = app.listen(process.env.PORT, function() {
   
   
-  console.log(`Server listeningg port  ${PORT}`);
+  console.log(`Server listeningg port  ${this.address().port}`);
 });
+
+
+
+
+
+
+
+
+//SOCKET PARA EL CHAT
 
 const io = new Server(expressServer)
 

@@ -20,6 +20,7 @@ router.use('/users', userRoutes)
 router.get('/chat', (req, res) => res.redirect('/chat.html'))
 
 
+
 router.get('/error', (req, res) => {res.render('error', {data: 'error'})})
 
 

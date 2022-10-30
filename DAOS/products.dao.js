@@ -10,17 +10,57 @@ const getProducts = async () => {
 
 
 const load_p = async (req, res)=> {
+
   const product = await products_model.create(req.body)
 
-    
+}
 
-  res.render('loaded')
+const getSomeProducts = async (products) => {
+
+  
+  return await products.map(async id => {
+    
+  const productToAdd = await products_model.find({_id : id})
+  
+  return productToAdd[0]
+  })
+
 }
 
 
 
 
+
+
+const updateProduct = async (req, res)=> {
+  
+  const fieldsArray = Object.entries(req.body)
+  const filtered = fieldsArray.filter(([key, value]) => value != "")
+  const fields = Object.fromEntries(filtered)
+
+
+  const {product_name,
+    product_description,
+    product_price,
+    product_imgUrl,
+    product_stock,
+    id} = req.body
+  
+  const updatedP = await products_model.updateOne({_id : id}, {$set: fields})
+
+}
+
+const del_prod = async (req, res) => {
+  const deleted = await products_model.deleteOne({_id: req.body.id})
+
+}
+
+
+
 export const productDao = {
 load_p,
-getProducts
+getProducts,
+updateProduct,
+del_prod,
+getSomeProducts
 };

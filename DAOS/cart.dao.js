@@ -7,12 +7,12 @@ const addCart = async (req, res) => {
     const product = await products_model.findOne({_id: req.params.id})
 
     if(existingCart){
-        existingCart.products.push(product)
+        existingCart.products.push(req.params.id)
         await existingCart.save()
         res.render('added', {product})
        
     }else{
-        const newCart = new cart_model({user_id: req.session.passport.user, products: product})
+        const newCart = new cart_model({user_id: req.session.passport.user, products: req.params.id})
         await newCart.save()
 
         res.render('added', {product})

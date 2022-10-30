@@ -1,5 +1,5 @@
 import bcrypt from 'bcrypt'
-import {modelo, cart_model, products_model} from './models.js'
+import {modelo} from './models.js'
 //import nodemailer from 'nodemailer'
 
 function auth(req, res, next) {

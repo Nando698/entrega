@@ -15,4 +15,13 @@ router
   .get(isAdmin ,(req,res) => {res.render('loadProduct')})
   .post(isAdmin, productsController.loadProduct)
 
+  router
+  .route('/update-product')
+  .get(isAdmin ,productsController.updatePanel)
+  .post(isAdmin, productsController.updateProduct)
+
+  router
+  .route('/delete-product')
+  .post(isAdmin, productsController.deleteProduct)
+
 export default router;

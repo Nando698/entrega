@@ -10,7 +10,15 @@ const logOut = (req, res) => {
       
   }
 
+  const adminPanel = (req, res) => {
+
+    res.render('panel')
+   
+      
+  }
+
 
 export default {
-    logOut
+    logOut,
+    adminPanel
 }

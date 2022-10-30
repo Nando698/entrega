@@ -11,8 +11,20 @@
 </head>
 <body>
     <div id="load-form-container">
-        <h2>Cargar producto</h2>
-        <form action="/products/load-product" method="post" id="load-form">
+        <h2>Modificar producto</h2>
+        <form action="/products/update-product" method="post" id="load-form">
+            <select name="id">
+
+                <% data.forEach(p => { %>
+                
+                    <option value="<%- p.id%>" name="<%- p.id%>"> <%- p.product_name%></option>
+                    
+                    
+                    <% })  %> 
+
+
+
+            </select>
             <input type="text" placeholder="Nombre" name="product_name">
             <input type="text" placeholder="Descripcion" name="product_description">
             <input type="number" placeholder="Precio" name="product_price">
@@ -22,7 +34,28 @@
             <button class="btn btn-success" type="submit">Enviar</button>
             
         </form>
-        <button class="btn btn-dark"><a href="./">volver</a></button>
-    </div>
+        
+    
+    
+    
+    <form action="/products/delete-product" method="POST">
+    
+        <select name="id">
+
+            <% data.forEach(p => { %>
+            
+                <option value="<%- p.id%>" name="<%- p.id%>"> <%- p.product_name%></option>
+                
+                
+                <% })  %> 
+
+
+
+        </select>
+        <button class="btn btn-danger" type="submit">Eliminar este producto</button>
+    
+    </form>
+    <button class="btn btn-dark"><a href="./">volver</a></button>
+</div>
 </body>
 </html>

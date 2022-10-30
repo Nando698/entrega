@@ -6,13 +6,13 @@ const router = Router()
 
 router.get('/logOut', auth, userController.logOut)
 
-router.get('/register', (req,res) => {
-  res.render('register')
-})
+router.get('/panel', auth, userController.adminPanel)
 
-router.get('/login-error', (req, res) => {
-    res.render('login-error')
-  })
+//No uso controller en los casos en los cuales solo se renderiza una view
+router.get('/register', (req,res) => {res.render('register')})
+
+router.get('/login-error', (req, res) => {res.render('login-error')})
+
 
 
   export default router

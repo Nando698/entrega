@@ -18,9 +18,14 @@
   <div id="welcontainer">
     <h1>Bienvenido <%= data.firstName %> </h1>  
     <a href="./carrito">Ver tus productos</h3></a>
+    
     <img src="./upload/<%= data.avatar %>" id="avatar">
  </div>
  <form action="/users/logOut" method="get"><button type="submit" id="logOut-btn">Cerrar sesion</button></form>
+ <% if(data.admin === true ){ %><h3><a href="./users/panel"> Panel de administrador</h3></a><% } %>
+ 
+
+ 
       <% } %>
 <a href="/chat"><span id="chatButton" class="btn btn-primary">Chatea!</span></a>
 </nav>
