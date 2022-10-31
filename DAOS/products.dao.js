@@ -15,14 +15,14 @@ const load_p = async (req, res)=> {
 
 }
 
+
+
+
 const getSomeProducts = async (products) => {
 
-  
-  return await products.map(async id => {
-    
-  const productToAdd = await products_model.find({_id : id})
-  
-  return productToAdd[0]
+
+  return await products_model.find({
+    '_id': {$in: products}
   })
 
 }

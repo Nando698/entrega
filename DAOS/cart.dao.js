@@ -41,9 +41,17 @@ const deleteProductFromCart = async (req, res) => {
 
   };
 
+
+  const empty_cart = async (req, res) => {
+    const cart = await cart_model.findOne({user_id : req.session.passport.user})
+   
+    const empty = await cart_model.updateOne({_id : cart.id}, {$set: {products: []}})
+  }
+
 export const cartDao = {
     addCart,
     getUserCart,
-    deleteProductFromCart
+    deleteProductFromCart,
+    empty_cart
 
 }

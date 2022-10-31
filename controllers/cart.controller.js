@@ -6,13 +6,13 @@ import { productDao } from "../DAOS/products.dao.js";
 const getCart = async (req, res) => {
 
     const cart = await cartDao.getUserCart(req.session.passport.user)
-  
-
-    const products = await productDao.getSomeProducts(cart[0].products)
+    console.log('asdasdas', cart)
     
-    console.log('productss',  products)
+    
+    
     
     if (cart[0]) {
+        const products =  await productDao.getSomeProducts(cart[0].products)
         res.render('cart', {
             data: req.user,
             products: products,

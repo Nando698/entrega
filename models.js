@@ -41,6 +41,14 @@ const chat_schema = new mongoose.Schema({
     fechahora: { type: String, required: true },
   });
 
+  const orders_schema = new mongoose.Schema({
+    
+    nro  : Number,
+    user : String,
+    prod : Array
+    
+})
+
 
 
 
@@ -49,8 +57,9 @@ const modelo = mongoose.model('User', schema);
 const cart_model = mongoose.model('Cart', cart_schema);
 const products_model = mongoose.model('Products', products_schema);
 const chat_model = mongoose.model('Chats', chat_schema);
+const order_model = mongoose.model('Orders', orders_schema)
 
 
 
 
-export {modelo, cart_model, products_model, chat_model}
+export {modelo, cart_model, products_model, chat_model, order_model}

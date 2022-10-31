@@ -2,6 +2,7 @@ import { Router } from "express";
 import productRoutes from './products.routes.js'
 import cartRoutes from './cart.routes.js'
 import userRoutes from './users.routes.js'
+import orderRoutes from './orders.routes.js'
 
 
 
@@ -25,10 +26,7 @@ router.get('/error', (req, res) => {res.render('error', {data: 'error'})})
 
 
 
-router.post('/sendOrder', async (req, res) => {
-  
-  res.redirect('/')
-})
+router.use('/orders', orderRoutes)
 
 
   
