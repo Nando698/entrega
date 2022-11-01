@@ -36,7 +36,7 @@ const deleteProduct = async (req, res) => {
 
     const cart = await cartDao.deleteProductFromCart(req, res)
 
-    res.render('deleted')
+    res.render('info', {msj: "Producto eliminado"})
 }
 
 export default {

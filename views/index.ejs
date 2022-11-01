@@ -26,7 +26,7 @@
               <h3><%- p.product_description %> </h3>
 
               <p>Precio:<%- p.product_price %> </p>
-              <img src="<%- p.product_imgUrl %>">
+              <img src=<% if(p.product_imgUrl){ %><%- p.product_imgUrl %><% }else{ %> "https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/No-Image-Placeholder.svg/1665px-No-Image-Placeholder.svg.png" <% } %>>
               <form action="/carrito/<%= p.id %>" method="post"><button type="submit">Agregar</button></form>
             </div>
            <% })  %> 

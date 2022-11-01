@@ -22,7 +22,7 @@ const sendOrder = async (req, res) => {
 
         const empty = await cartDao.empty_cart(req, res)
 
-        res.render('info', {msj: "Orden enviada"})
+        res.render('info', {msj: `Orden enviada con el numero ${nueva_orden.nro}`})
 }
 
 
