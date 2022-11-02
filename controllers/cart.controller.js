@@ -28,7 +28,9 @@ const getCart = async (req, res) => {
 
 const addCart = async (req, res) => {
 
-    await cartDao.addCart(req, res)
+    const product = await cartDao.addCart(req, res)
+
+    res.render('added', {product})
 
 }
 

@@ -9,13 +9,13 @@ const addCart = async (req, res) => {
     if(existingCart){
         existingCart.products.push(req.params.id)
         await existingCart.save()
-        res.render('added', {product})
-       
+        
+       return product
     }else{
         const newCart = new cart_model({user_id: req.session.passport.user, products: req.params.id})
         await newCart.save()
 
-        res.render('added', {product})
+        return product
 
     }
 
