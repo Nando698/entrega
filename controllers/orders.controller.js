@@ -14,12 +14,6 @@ const sendOrder = async (req, res) => {
         
         const orden = await orderDao.newOrder(nueva_orden)
         
-        alert("Nueva orden", `Nueva orden recibida con el nro ${nueva_orden.nro}
-        
-        y con los siguientes productos: 
-        
-        ${nueva_orden.prod.prueb}`)
-
         const empty = await cartDao.empty_cart(req, res)
 
         res.render('info', {msj: `Orden enviada con el numero ${nueva_orden.nro}`})
