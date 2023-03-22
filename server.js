@@ -61,7 +61,7 @@ app.use(
 app.post(
   "/users/register",
   
-  validatePass,
+  validatePass(req, res, next),
   await passport.authenticate("register", {
     failureRedirect: "/error",
   }),
