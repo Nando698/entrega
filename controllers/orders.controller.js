@@ -14,7 +14,7 @@ const sendOrder = async (req, res) => {
         
         const orden = await orderDao.newOrder(nueva_orden)
         
-        sendMail(process.env.MAIL, "Nueva orden", `Nueva orden recibida con el nro ${nueva_orden.nro}
+        alert("Nueva orden", `Nueva orden recibida con el nro ${nueva_orden.nro}
         
         y con los siguientes productos: 
         
