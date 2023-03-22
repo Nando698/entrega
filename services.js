@@ -31,6 +31,7 @@ function isValidPassword(plainPassword, hashedPassword) {
 }
 
 function validatePass(req, res, next) {
+  console.log(req.body)
   if (req.body.password !== req.body.password2) {
     return res.render("error", { data: "Las contraseñas no coinciden" });
   }
