@@ -16,7 +16,7 @@ const signUp_strategy = new LocalStrategy(
   async (req, username, password, done) => {
     try {
       const existingUser = await modelo.findOne({
-        username,
+        username
       });
 
       if (existingUser) {
