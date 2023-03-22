@@ -28,7 +28,6 @@ const signUp_strategy = new LocalStrategy(
         username: req.body.username,
         firstName: req.body.input_name,
         lastName: req.body.input_lastName,
-        avatar: req.file.filename,
         admin: false,
       };
 
