@@ -60,7 +60,7 @@ app.use(
 /////////////// Registro
 app.post(
   "/users/register",
-  upload.single("avatar"),
+  
   validatePass,
   await passport.authenticate("register", {
     failureRedirect: "/error",
