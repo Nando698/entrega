@@ -60,7 +60,6 @@ app.use(
 /////////////// Registro
 app.post(
   "/users/register",
-  'asdasd',
   validatePass,
   await passport.authenticate("register", {
     failureRedirect: "/error",
